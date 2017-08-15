@@ -1,4 +1,4 @@
-class CreateDoctorGrades < ActiveRecord::Migration
+class CreateDoctorGrades < ActiveRecord::Migration[4.2]
   def change
     create_table :doctor_grades do |t|
       t.integer :doctor_id

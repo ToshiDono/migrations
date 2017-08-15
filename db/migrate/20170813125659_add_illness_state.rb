@@ -1,4 +1,4 @@
-class AddIllnessState < ActiveRecord::Migration
+class AddIllnessState < ActiveRecord::Migration[4.2]
   def self.up
     add_column :illnesses, :aasm_state, :string
   end

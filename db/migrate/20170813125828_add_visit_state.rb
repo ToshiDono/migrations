@@ -1,4 +1,4 @@
-class AddVisitState < ActiveRecord::Migration
+class AddVisitState < ActiveRecord::Migration[4.2]
   def self.up
     add_column :visits, :aasm_state, :string
   end

@@ -1,4 +1,4 @@
-class CreateDiagnoses < ActiveRecord::Migration
+class CreateDiagnoses < ActiveRecord::Migration[4.2]
   def change
     create_table :diagnoses do |t|
       t.integer :disease_id

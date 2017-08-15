@@ -1,4 +1,4 @@
-class AddDeviseToPatients < ActiveRecord::Migration
+class AddDeviseToPatients < ActiveRecord::Migration[4.2]
   def self.up
     change_table :patients do |t|
       ## Database authenticatable
