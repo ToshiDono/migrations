@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 20170826171702) do
 
-  create_table "admins", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "admins", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "surname"
     t.string "patronymic"
@@ -33,14 +36,14 @@ ActiveRecord::Schema.define(version: 20170826171702) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "analyses", force: :cascade do |t|
+  create_table "analyses", id: :serial, force: :cascade do |t|
     t.string "title", null: false
     t.string "conclusion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "clinics", force: :cascade do |t|
+  create_table "clinics", id: :serial, force: :cascade do |t|
     t.string "title", null: false
     t.string "phone"
     t.string "email", null: false
@@ -49,7 +52,7 @@ ActiveRecord::Schema.define(version: 20170826171702) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "diagnoses", force: :cascade do |t|
+  create_table "diagnoses", id: :serial, force: :cascade do |t|
     t.integer "disease_id"
     t.integer "illness_id"
     t.string "description"
@@ -57,33 +60,33 @@ ActiveRecord::Schema.define(version: 20170826171702) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "disease_specializations", force: :cascade do |t|
+  create_table "disease_specializations", id: :serial, force: :cascade do |t|
     t.integer "disease_id"
     t.integer "specialization_id"
   end
 
-  create_table "disease_symptoms", force: :cascade do |t|
+  create_table "disease_symptoms", id: :serial, force: :cascade do |t|
     t.integer "disease_id"
     t.integer "symptom_id"
   end
 
-  create_table "diseases", force: :cascade do |t|
+  create_table "diseases", id: :serial, force: :cascade do |t|
     t.string "title", null: false
     t.string "description"
     t.string "icd_code"
   end
 
-  create_table "doctor_grades", force: :cascade do |t|
+  create_table "doctor_grades", id: :serial, force: :cascade do |t|
     t.integer "doctor_id"
     t.integer "grade_id"
   end
 
-  create_table "doctor_specializations", force: :cascade do |t|
+  create_table "doctor_specializations", id: :serial, force: :cascade do |t|
     t.integer "doctor_id"
     t.integer "specialization_id"
   end
 
-  create_table "doctors", force: :cascade do |t|
+  create_table "doctors", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.string "surname", null: false
     t.string "patronymic"
@@ -93,25 +96,25 @@ ActiveRecord::Schema.define(version: 20170826171702) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "drugs", force: :cascade do |t|
+  create_table "drugs", id: :serial, force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "grades", force: :cascade do |t|
+  create_table "grades", id: :serial, force: :cascade do |t|
     t.string "title"
   end
 
-  create_table "illness_symptoms", force: :cascade do |t|
+  create_table "illness_symptoms", id: :serial, force: :cascade do |t|
     t.integer "illness_id"
     t.integer "symptom_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "illnesses", force: :cascade do |t|
+  create_table "illnesses", id: :serial, force: :cascade do |t|
     t.integer "patient_id"
     t.integer "doctor_id"
     t.datetime "created_at"
@@ -119,7 +122,7 @@ ActiveRecord::Schema.define(version: 20170826171702) do
     t.string "aasm_state"
   end
 
-  create_table "patients", force: :cascade do |t|
+  create_table "patients", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "surname"
     t.string "patronymic"
@@ -140,7 +143,7 @@ ActiveRecord::Schema.define(version: 20170826171702) do
     t.index ["reset_password_token"], name: "index_patients_on_reset_password_token", unique: true
   end
 
-  create_table "performed_actions", force: :cascade do |t|
+  create_table "performed_actions", id: :serial, force: :cascade do |t|
     t.integer "actor_id", null: false
     t.integer "subject_id", null: false
     t.string "actor_type", null: false
@@ -150,12 +153,12 @@ ActiveRecord::Schema.define(version: 20170826171702) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "practices", force: :cascade do |t|
+  create_table "practices", id: :serial, force: :cascade do |t|
     t.integer "clinic_id"
     t.integer "doctor_id"
   end
 
-  create_table "prescriptions", force: :cascade do |t|
+  create_table "prescriptions", id: :serial, force: :cascade do |t|
     t.string "recommendations"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -164,17 +167,17 @@ ActiveRecord::Schema.define(version: 20170826171702) do
     t.integer "drug_id"
   end
 
-  create_table "specializations", force: :cascade do |t|
+  create_table "specializations", id: :serial, force: :cascade do |t|
     t.string "title"
     t.string "code"
   end
 
-  create_table "symptoms", force: :cascade do |t|
+  create_table "symptoms", id: :serial, force: :cascade do |t|
     t.string "title", null: false
     t.string "description"
   end
 
-  create_table "visits", force: :cascade do |t|
+  create_table "visits", id: :serial, force: :cascade do |t|
     t.datetime "date_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

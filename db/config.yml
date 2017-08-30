@@ -1,11 +1,16 @@
-development:
-  adapter: sqlite3
-  database: ../mkdev_dev.sqlite3
+default: &default
+  adapter: postgresql
+  encoding: unicode
   pool: 5
   timeout: 5000
+  host: localhost
+  username: postgres
+  password: 12345
+
+development:
+  <<: *default
+  database: /Users/anton/pg_data
 
 test: &test
-  adapter: sqlite3
-  database: ../mkdev_test.sqlite3
-  pool: 5
-  timeout: 5000
+  <<: *default
+  database: /Users/anton/pg_data
