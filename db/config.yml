@@ -2,15 +2,19 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  timeout: 5000
-  host: localhost
   username: postgres
   password: 12345
+  timeout: 5000
+  host: localhost
 
 development:
   <<: *default
-  database: /Users/anton/pg_data
+  database: mkdev_dev
 
-test: &test
+test:
   <<: *default
-  database: /Users/anton/pg_data
+  database: mkdev_test
+
+production:
+  <<: *default
+  database: mkdev_prod
