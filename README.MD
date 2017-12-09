@@ -1,5 +1,7 @@
 # README
 
+Functionality: data schema management.
+
 Running:
 
 * Clone app: `git clone git@github.com:mkdevprogects/base.git`
